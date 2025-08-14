@@ -1,0 +1,315 @@
+require and exports :
+Default Export : module.exports = value    (if we talk about importing one sepecific thing from the file)
+Named Export : exports.name = value (if we talk about multiple )
+Import Default : require()
+Import Named : require().name
+🔧 What is DNS?
+DNS is like the phone book of the internet. It translates domain names 
+ (like www.example.com) into IP addresses
+ (like 192.0.2.1), which computers use to communicate.
+   
+🧠 What is a Protocol?
+A protocol is a set of rules that define how data is transmitted
+ and understood between computers.
+
+Think of it like the language two computers agree to 
+speak when they talk to each other.
+example :
+
+HTTP	HyperText Transfer Protocol	Used to send/receive data on the web	Calling APIs (GET /api/users)
+HTTPS	HTTP + Secure (TLS/SSL)	Like HTTP but encrypted for security	All modern web traffic (https://...)
+
+ 1.🟢 What is an IP?
+IP stands for Internet Protocol address.
+
+It's like the address of a computer/server on the internet.
+
+Example: 192.168.1.1 or 34.120.55.9
+
+Every device that connects to the internet has an IP address.
+
+You connect to servers using IPs (or domains, which DNS turns into IPs).
+
+📌 Analogy:
+IP is like the street address of a house.
+
+🧠 2. What is an API?
+API stands for Application Programming Interface.
+
+It’s a set of rules and endpoints that let programs talk to each other.
+
+A backend server exposes APIs to allow others (like a frontend or mobile app)
+ to get data or perform actions.
+
+Example: GET /api/users might return a list of users.
+
+📌 Analogy:
+API is like the menu at a restaurant—it tells you what you can order and how to ask for it.
+ 🧩 Components of an API
+Here are the key components you’ll deal with when working with APIs:
+
+1. Endpoint
+A URL path that represents a resource or action.
+
+Example:
+
+arduino
+Copy
+Edit
+https://pharmaapp.com/api/products
+2. HTTP Methods (Verbs)
+Used to define what action you want to take on the resource.
+
+Method	Purpose	Example
+GET	Read data	Get list of products
+POST	Create new data	Add a new product
+PUT	Update entire data object	Update a product completely
+PATCH	Update part of data	Change only product price
+DELETE	Remove data	Delete a product
+
+3. Request Headers
+Key-value pairs that provide meta-information about the request.
+
+Example headers:
+
+http
+Copy
+Edit
+Content-Type: application/json
+Authorization: Bearer <token>
+4. Request Body
+The data you send when making a POST, PUT, or PATCH request.
+
+Usually in JSON format.
+
+Example:
+
+json
+Copy
+Edit
+{
+  "name": "Paracetamol",
+  "price": 15,
+  "quantity": 20
+}
+5. Response
+The data the API returns back to the client.
+
+Usually JSON too.
+
+Example:
+
+json
+Copy
+Edit
+{
+  "id": 101,
+  "name": "Paracetamol",
+  "status": "Created"
+}
+6. Status Codes
+These are HTTP status codes that tell you the result of your request:
+
+Code	Meaning
+200	OK (Success)
+201	Created
+400	Bad Request
+401	Unauthorized
+403	Forbidden
+404	Not Found
+500	Server Error
+
+7. Authentication / Authorization
+Most APIs are protected, meaning only registered users can access them.
+
+Common methods:
+
+API Key
+
+JWT Token (JSON Web Token)
+
+OAuth2 (used with Google, Facebook login, etc.)
+
+8. Rate Limiting
+Limits how many times a client can call the API (e.g., 1000 requests/day)
+ to avoid abuse or overloading the server.
+give me a summary about the data bases and the deferences betwenn the two types of db 
+
+
+
+
+📦 What is a Database?
+A database is a structured place to store, manage, and retrieve data.
+
+In backend development, your app usually saves data (like users, products, posts...)
+ in a database instead of in memory, so the data persists (doesn’t disappear when the server restarts).
+
+🧩 Main Types of Databases
+1. 🧱 Relational Databases (SQL)
+Use tables with rows and columns, like Excel.
+
+❖ Examples: MySQL, PostgreSQL, SQLite, Oracle
+
+❖ Language: SQL (Structured Query Language)
+
+❖ Structure: Tables with relationships (foreign keys)
+
+❖ Good for: Structured data with clear relationships (users, orders, products...)
+
+✔ Pros:
+Strong data integrity (constraints, schemas)
+
+Easy to use with relationships (joins)
+
+Mature and widely supported
+
+✖ Cons:
+Not flexible with unstructured data
+
+Can be slower with very large and complex data if not optimized
+
+2. 🌿 Non-Relational Databases (NoSQL)
+Do not use fixed tables. Store data in various formats like documents, key-value, or graphs.
+
+❖ Examples: MongoDB, Firebase, Redis, Cassandra
+
+❖ Common format: JSON-like documents
+
+❖ Structure: Collections of documents (e.g., in MongoDB)
+
+❖ Good for: Flexible, dynamic, or big data apps
+
+✔ Pros:
+Very flexible (no strict schema)
+
+Scales easily across many servers
+
+Great for fast reads/writes
+
+✖ Cons:
+Weaker consistency (by default)
+
+Relationships can be harder to model
+
+🧱 1. Monolithic Architecture
+🔹 What it is:
+A single, unified backend application where all functionalities (authentication, database access, APIs, business logic) are bundled together and run as one service.
+
+🔸 Pros:
+Simple to develop and deploy
+
+Easier to test locally
+
+Great for small projects and early MVPs
+
+🔸 Cons:
+Hard to scale specific parts
+
+A bug in one part can affect the whole system
+
+Difficult to maintain as it grows
+
+🧩 2. Microservices Architecture
+🔹 What it is:
+Breaks down the backend into many small, independent services. Each service handles a specific business function and communicates with others via APIs (usually REST or gRPC).
+
+🔸 Pros:
+Scales better (each service can be scaled independently)
+
+Easier to maintain, test, and deploy small parts
+
+Teams can work independently on different services
+
+🔸 Cons:
+More complex setup and deployment
+
+Requires service discovery, API gateways, and strong DevOps practices
+
+Can lead to latency and data consistency issues
+
+🌐 3. Serverless Architecture
+🔹 What it is:
+You write backend functions (e.g., AWS Lambda, Azure Functions) and deploy them without managing servers. These are event-driven and scale automatically.
+
+🔸 Pros:
+No server management
+
+Scales automatically
+
+Pay only for what you use
+
+🔸 Cons:
+Cold starts (initial latency)
+
+Limited runtime (execution timeouts)
+
+Harder to debug
+
+Not ideal for long-running processes
+
+🧾 What is a VPS?
+A VPS is a virtual machine that acts like a dedicated server, but it runs on a shared physical server. It uses virtualization to split one physical server into multiple isolated virtual environments.
+
+🧠 Simple Analogy:
+Imagine a large building (physical server) with separate apartments (VPS).
+Each apartment has:
+
+Its own key (root access)
+
+Its own space (RAM, CPU, storage)
+
+Its own address (IP)
+
+And its neighbors don’t affect it
+
+🔹 How VPS Works:
+A physical server runs a hypervisor (like KVM, VMware, etc.)
+
+It creates multiple virtual servers
+
+Each VPS has its own operating system, can reboot independently, and is isolated from others
+
+✅ Why Use a VPS?
+Use Case	Why It’s Useful
+Hosting websites	More control than shared hosting
+Running apps or APIs	Install your own backend, DB, etc.
+Game servers	Host Minecraft, CS, etc.
+Learning Linux/server admin	Practice with full root access
+Hosting bots or scripts	Always-on environment for automation
+VPN or Proxy server	Secure personal network usage
+
+===========
+we use this cmd : npx eslint --init (for a more clean code )
+===========
+Purpose of env.js or .env
+Instead of putting sensitive values (like database passwords, API keys) directly in your code, you store them in a separate file.
+
+This makes it easier to change them without editing your code and keeps them safe.
+===========
+What is a “config” in a project?
+Config is short for configuration.
+
+It’s the place where you store settings and important values your app needs to run — like:
+
+Server port
+
+Database connection string
+
+Secret keys for authentication
+
+API keys for third-party services
+
+Purpose:
+Instead of scattering these values throughout your code, you put them in one place (the config), so:
+
+They’re easy to find.
+
+They’re easy to change.
+
+Your code stays clean.
+===========
+🔹 in the server we fined the backend codes 
+🔹 the Get req is the default 
+
+🔹in the ejs res.render supposed that you have a folder named views you put your file in 
+so if you named it something else you will find many problems 
